@@ -5,18 +5,10 @@
 			<div class="twelve columns">
 				<hr />
 				<div class="row">
-					<div class="six columns">
-						Design by Foundation
+					<div class="nine columns">
+						<a href="https://phpacademy.org/forum/topic/creating-a-forum-system-22784" title="phpacademy.org topic by Apixen" target="_blank">phpacademy.org open-source project</a>
 					</div>
-					<div class="six columns">
-						<ul class="inline-list right">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Latest Posts</a></li>
-							<li><a href="#">Popular Posts</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">Contact Us</a></li>
-						</ul>
-					</div>
+					<div class="three columns"><a href="http://foundation.zurb.com" target="_blank">Design by Foundation Frontend</a></div>
 				</div>
 			</div>	
 	</body>

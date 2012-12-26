@@ -64,8 +64,7 @@
 						if($data["auto_logout"] == "yes")
 						{
 							//automatically destroy their sessions and return false.
-							session_unset();
-							session_destroy();
+							$this->logout();
 							return false;
 						}
 							else
@@ -97,6 +96,15 @@
 		{
 			session_unset();
 			session_destroy();
+		}
+		
+		function categoryName($id)
+		{
+			$cat = $this->prepare("SELECT name FROM categories WHERE id = :id");
+			$cat->bindParam(":id", $id, PDO::PARAM_INT);
+			$cat->execute();
+			$cat_name = $cat->fetch(PDO::FETCH_ASSOC);
+			return (!empty($cat_name)) ? $cat_name['name'] : false;
 		}
 	}
 ?>

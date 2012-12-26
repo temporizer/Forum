@@ -1230,4 +1230,5 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
   .top-bar ul > li.has-button a.button { margin: 0; } }
   /* Custom */
   p.forum_desc { margin:0; padding:0; }
-  h5.category { padding:0px; margin:0;}
+  h5.category { padding:0; margin:0;}
+  h3.title { padding:0; margin:0; margin-bottom:10px; }

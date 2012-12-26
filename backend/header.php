@@ -43,11 +43,11 @@
 						</div>
 					</div><br />
 					<dl class="vertical tabs">
-						<dd><a href="#">Home</a></dd>
-						<dd><a href="#">Latest Posts</a></dd>
-						<dd><a href="#">Popular Posts</a></dd>
-						<dd><a href="#">Blog</a></dd>
-						<dd><a href="#">Contact Us</a></dd>
+						<dd><a href="index.php">Home</a></dd>
+						<dd><a href="index.php?action=latest">Latest Posts</a></dd>
+						<dd><a href="index.php?action=popular">Popular Posts</a></dd>
+						<dd><a href="blog.php">Blog</a></dd>
+						<dd><a href="contact.php">Contact Us</a></dd>
 					</dl>
 				</div>
 			</div>
