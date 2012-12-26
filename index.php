@@ -10,7 +10,7 @@
 					if(isset($fid))
 					{
 						//start getting topics in category
-						$topics = $User->prepare("SELECT topics.id, topics.name, topics.post_count, topics.view_count, (SELECT COUNT(posts.solved_post) FROM posts WHERE posts.topic_id = topics.id AND solved_post = 'yes') AS solved_post FROM topics WHERE topics.cat_id = :cat ORDER BY topics.id DESC");
+						$topics = $User->prepare("SELECT topics.id, topics.name, topics.post_count, topics.view_count, COUNT( posts.solved_post ) AS solved_post, users.username AS posted_by, users.id AS posted_by_id FROM topics LEFT OUTER JOIN posts ON posts.topic_id = topics.id LEFT OUTER JOIN users ON users.id = posts.posted_by WHERE topics.cat_id = :cat GROUP BY topics.id");
 						$topics->bindParam(":cat", $fid, PDO::PARAM_INT);
 						$topics->execute();
 						$topic_data = $topics->fetchAll(PDO::FETCH_ASSOC);
@@ -20,9 +20,10 @@
 							foreach($topic_data AS $topic)
 							{
 								echo '<div class="row">';
-									echo '<div class="eight columns"><h5 class="category">' . $topic['name'] . '</h5></div>';
-									echo '<div class="two columns">' . number_format($topic['view_count']) . ' views</div>';
-									echo '<div class="two columns">' . number_format($topic['post_count']) . ' posts</div>';
+									echo '<div class="five columns"><h5 class="category" style="font-weight:normal;">' . $topic['name'] . '</h5></div>';
+									echo '<div class="three columns">Posted by <a href="profile.php?id=' . $topic['posted_by_id'] . '">' . $topic['posted_by'] . '</a></div>';
+									echo '<div class="two columns">' . number_format($topic['view_count']) . ' view(s)</div>';
+									echo '<div class="two columns">' . number_format($topic['post_count']) . ' post(s)</div>';
 								echo '</div>';
 								
 								echo '<hr />';
