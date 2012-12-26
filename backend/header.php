@@ -5,7 +5,7 @@
 	if(STATUS === FALSE)
 	{
 		//website is suppose to be offline
-		header('Location: ' . STATUS_REDIRECT);e
+		header('Location: ' . STATUS_REDIRECT);
 		exit();
 	}
 	
