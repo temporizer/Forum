@@ -1,6 +1,6 @@
 <?php
 	//get db configuration
-	require_once(dirname(__FILE__) . "/config/db.php");
+	require_once(dirname(__FILE__) . "/../config/db.php");
 	
 	class User extends PDO
 	{
