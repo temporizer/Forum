@@ -1,8 +1,14 @@
 <?php
 	//get site configuration
 	require_once(dirname(__FILE__) . "/config/site.php");
-	//get db configuration
-	require_once(dirname(__FILE__) . "/config/db.php");
+	
+	if(STATUS === FALSE)
+	{
+		//website is suppose to be offline
+		header('Location: ' . STATUS_REDIRECT);e
+		exit();
+	}
+	
 	//get user class + pdo class
 	require_once(dirname(__FILE__) . "/class/user.php");
 	
