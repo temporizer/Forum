@@ -119,6 +119,11 @@
 			return hash('sha512', $value);
 		}
 		
+		function redirect($location)
+		{
+			header('Location: ' . $location);
+		}
+		
 		function create_session_data()
 		{
 			//get args

@@ -21,12 +21,9 @@
 									topics.name,
 									topics.post_count,
 									topics.view_count,
-									COUNT( IF( posts.solved_post =  'yes', 1, NULL ) )
-										AS solved_post,
-									users.username
-										AS posted_by,
-									users.id
-										AS posted_by_id
+									IF( posts.solved_post =  'yes', 1, 0 ) AS solved_post,
+									users.username AS posted_by,
+									users.id AS posted_by_id
 								FROM topics
 								LEFT OUTER JOIN
 									posts ON
@@ -73,12 +70,9 @@
 									topics.name,
 									topics.post_count,
 									topics.view_count,
-									COUNT( posts.solved_post )
-										AS solved_post,
-									users.username
-										AS posted_by,
-									users.id
-										AS posted_by_id
+									IF( posts.solved_post =  'yes', 1, 0 ) AS solved_post,
+									users.username AS posted_by,
+									users.id AS posted_by_id
 								FROM topics
 								LEFT OUTER JOIN
 									posts ON
@@ -131,10 +125,8 @@
 									topics.name,
 									topics.post_count,
 									topics.view_count,
-									COUNT( posts.solved_post )
-										AS solved_post, 
-									users.username
-										AS posted_by,
+									IF( posts.solved_post =  'yes', 1, 0 ) AS solved_post,
+									users.username AS posted_by,
 									users.id AS posted_by_id
 								FROM topics
 								LEFT OUTER JOIN

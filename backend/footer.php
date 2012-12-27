@@ -10,6 +10,14 @@
 					</div>
 					<div class="three columns"><a href="http://foundation.zurb.com" target="_blank">Design by Foundation Frontend</a></div>
 				</div>
-			</div>	
+			</div>
+		</footer>
+		
+		<script src="js/jquery.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/jquery.foundation.buttons.js"></script>
+		<script src="js/jquery.foundation.buttons.js"></script>
+		<script src="js/jquery.foundation.reveal.js"></script>
+		<script src="js/custom.js"></script>
 	</body>
 </html>
