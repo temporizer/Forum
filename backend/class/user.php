@@ -36,11 +36,18 @@
 		
 		private function logged_in()
 		{
-			if(isset($_SESSION['session_data']))
+			// changed to $_SESSION because of the user class
+			if(isset($_SESSION))
+
+			//if(isset($_SESSION['session_data']))
 			{
 				//session_data is set
 				//explode session data to get little bits
-				$session_data = explode(":", $_SESSION['session_data']);
+
+				// changed to $_SESSION because of the user class
+				$session_data = $_SESSION;
+				//$session_data = explode(":", $_SESSION['session_data']);
+				
 				//session data should have as many elements as $this->session_elements.
 				if(count($session_data) === count($this->session_elements))
 				{
@@ -132,7 +139,10 @@
 			//If there's only one argument, and it's an array
 			if(count($args) == 1 && is_array($args[0]))
 			{
-				return implode(":", $args[0]);
+				// changed so $_SESSION = array as opposed to $_SESSION['session_data']
+				return $args[0];
+
+				//return implode(":", $args[0]);
 			}
 				else
 			{

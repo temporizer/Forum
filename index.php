@@ -3,6 +3,10 @@
 ?>
 			<div class="nine columns">
 				<?php
+				//uncomment below for testing purposes to see the session data in play
+				// echo '<pre>';
+				// print_r($_SESSION);
+				// echo '</pre>';
 					if(isset($_GET['action']))
 					{
 						$action = strtolower($_GET['action']);

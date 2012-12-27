@@ -62,7 +62,9 @@
 								{
 									$session_data = $User->create_session_data($data);
 									echo $session_data;
-									$_SESSION['session_data'] = $session_data;
+									$_SESSION = $session_data;
+									// unsets password field in session data
+									//unset($_SESSION['password']);
 									header('Location: ' . $Return_to);
 								}
 							}
