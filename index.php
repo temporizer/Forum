@@ -1,7 +1,7 @@
 <?php
 	require(dirname(__FILE__) . '/backend/header.php');
 ?>
-			<div class="nine columns">				
+			<div class="nine columns">
 				<?php
 					if(isset($_GET['action']))
 					{

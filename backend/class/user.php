@@ -12,7 +12,11 @@
 			"password",
 			"email",
 			"access",
-			"banned_until"
+			"banned_until",
+			"post_count",
+			"solved_count",
+			"avatar",
+			"description"
 		);
 		public $logged_in = false;
 		
@@ -110,6 +114,27 @@
 			session_destroy();
 		}
 		
+		function hash($value)
+		{
+			return hash('sha512', $value);
+		}
+		
+		function create_session_data()
+		{
+			//get args
+			$args = func_get_args();
+			
+			//If there's only one argument, and it's an array
+			if(count($args) == 1 && is_array($args[0]))
+			{
+				return implode(":", $args[0]);
+			}
+				else
+			{
+				return implode(":", $args);
+			}
+		}
+		
 		function categoryName($id)
 		{
 			$cat = $this->prepare("SELECT name FROM categories WHERE id = :id");
@@ -117,6 +142,79 @@
 			$cat->execute();
 			$cat_name = $cat->fetch(PDO::FETCH_ASSOC);
 			return (!empty($cat_name)) ? $cat_name['name'] : false;
+		}
+		
+		function current_page()
+		{
+			if(!empty($_SERVER['HTTPS']))
+			{
+				$url = "https://" .
+					$_SERVER['SERVER_NAME'] .
+					(($_SERVER["SERVER_PORT"] != "80") ? ':' . $_SERVER["SERVER_PORT"] : '') .
+					$_SERVER['REQUEST_URI'];
+			}
+				else
+			{
+				$url = "http://" .
+					$_SERVER['SERVER_NAME'] .
+					(($_SERVER["SERVER_PORT"] != "80") ? ':' . $_SERVER["SERVER_PORT"] : '') .
+					$_SERVER['REQUEST_URI'];
+			}
+			return $url;
+		}
+		
+		function parseTime($time, $type = "")
+		{
+			//if they feel they need an 'ago' on the time, the suffix adds it.
+			$suffix = ($type == "before") ? 'ago' : (($type == "after") ? 'more' : '');
+			
+			//try to get days first
+			if(($days = round(abs($time/86400), 0)) >= 1)
+			{
+				//if days is more than 6 days (one week).
+				if($days > 6)
+				{
+					//get weeks
+					$weeks = round(abs($days/7), 0);
+					
+					//if weeks is more than 3 weeks, should be a month.
+					if($weeks > 3)
+					{
+						//return the full date
+						return date("F d Y h:i A", $time);
+					}
+						else
+					{
+						//just return weeks
+						return $weeks . ' week' . (($weeks == 1) ? '' : 's') . ' ' . $suffix;
+					}
+				}
+					else
+				{
+					//return days
+					return $days . ' day' . (($days == 1) ? '' : 's') . ' ' . $suffix;
+				}
+			}
+				else
+			//get hours if days doesn't work out
+			if(($hours = round(abs($time/3600), 0)) >= 1)
+			{
+				//return hours
+				return $hours . ' hour' . (($hours == 1) ? '' : 's') . ' ' . $suffix;
+			}
+				else
+			//get minutes if hours doesn't work out
+			if(($minutes = round(abs($time/60), 0)) >= 1)
+			{
+				//return minutes
+				return $minutes . ' minute' . (($minutes == 1) ? '' : 's') . ' ' . $suffix;
+			}
+				else
+			{
+				//return seconds if all above fails.
+				$seconds = round(abs($time), 0);
+				return $seconds . ' second' . (($seconds == 1) ? '' : 's') . ' ' . $suffix;
+			}
 		}
 	}
 ?>

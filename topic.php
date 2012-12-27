@@ -5,7 +5,7 @@
 		header('Location: index.php');
 	}
 ?>
-			<div class="nine columns">				
+			<div class="nine columns">
 				<?php
 					//Get topic data.
 					$topic = $User->prepare(
