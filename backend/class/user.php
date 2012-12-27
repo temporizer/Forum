@@ -50,7 +50,19 @@
 					}
 					
 					//does the actual user exist though?
-					$check = $this->prepare("SELECT COUNT(username) AS user_cnt, auto_logout FROM users WHERE username = :username AND password = :password AND email = :email AND access = :access AND banned_until = :banned_until");
+					$check = $this->prepare(
+						"SELECT
+							COUNT(username)
+								AS user_cnt,
+							auto_logout
+						FROM users
+						WHERE
+							username = :username AND
+							password = :password AND
+							email = :email AND
+							access = :access AND
+							banned_until = :banned_until"
+					);
 					$check->bindParam(":username", $this->user["username"], PDO::PARAM_STR);
 					$check->bindParam(":password", $this->user["password"], PDO::PARAM_STR);
 					$check->bindParam(":email", $this->user["email"], PDO::PARAM_STR);

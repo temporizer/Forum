@@ -49,8 +49,8 @@
 									echo '<div class="row">';
 										echo '<div class="five columns"><h5 class="category" style="font-weight:normal;">' . (($topic['solved_post'] > 0) ? '[S] ' : '') . '<a href="topic.php?id=' . $topic['id'] . '">' . $topic['name'] . '</a></h5></div>';
 										echo '<div class="three columns">Posted by <a href="profile.php?id=' . $topic['posted_by_id'] . '">' . $topic['posted_by'] . '</a></div>';
-										echo '<div class="two columns">' . number_format($topic['view_count']) . ' view(s)</div>';
-										echo '<div class="two columns">' . number_format($topic['post_count']) . ' post(s)</div>';
+										echo '<div class="two columns">' . number_format($topic['view_count']) . ' view' . (($topic['view_count'] == 1) ? '' : 's') . '</div>';
+										echo '<div class="two columns">' . number_format($topic['post_count']) . ' post' . (($topic['post_count'] == 1) ? '' : 's') . '</div>';
 									echo '</div>';
 									
 									echo '<hr />';
@@ -99,8 +99,8 @@
 									echo '<div class="row">';
 										echo '<div class="five columns"><h5 class="category" style="font-weight:normal;">' . (($topic['solved_post'] > 0) ? '[S] ' : '') . '<a href="topic.php?id=' . $topic['id'] . '">' . $topic['name'] . '</a></h5></div>';
 										echo '<div class="three columns">Posted by <a href="profile.php?id=' . $topic['posted_by_id'] . '">' . $topic['posted_by'] . '</a></div>';
-										echo '<div class="two columns">' . number_format($topic['view_count']) . ' view(s)</div>';
-										echo '<div class="two columns">' . number_format($topic['post_count']) . ' post(s)</div>';
+										echo '<div class="two columns">' . number_format($topic['view_count']) . ' view' . (($topic['view_count'] == 1) ? '' : 's') . '</div>';
+										echo '<div class="two columns">' . number_format($topic['post_count']) . ' post' . (($topic['post_count'] == 1) ? '' : 's') . '</div>';
 									echo '</div>';
 									
 									echo '<hr />';
@@ -161,8 +161,8 @@
 									echo '<div class="row">';
 										echo '<div class="five columns"><h5 class="category" style="font-weight:normal;">' . (($topic['solved_post'] > 0) ? '[S] ' : '') . '<a href="topic.php?id=' . $topic['id'] . '">' . $topic['name'] . '</a></h5></div>';
 										echo '<div class="three columns">Posted by <a href="profile.php?id=' . $topic['posted_by_id'] . '">' . $topic['posted_by'] . '</a></div>';
-										echo '<div class="two columns">' . number_format($topic['view_count']) . ' view(s)</div>';
-										echo '<div class="two columns">' . number_format($topic['post_count']) . ' post(s)</div>';
+										echo '<div class="two columns">' . number_format($topic['view_count']) . ' view' . (($topic['view_count'] == 1) ? '' : 's') . '</div>';
+										echo '<div class="two columns">' . number_format($topic['post_count']) . ' post' . (($topic['post_count'] == 1) ? '' : 's') . '</div>';
 									echo '</div>';
 									
 									echo '<hr />';
